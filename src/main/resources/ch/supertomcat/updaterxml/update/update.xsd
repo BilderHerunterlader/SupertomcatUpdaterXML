@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- Root Element -->
+	<xs:element name="update">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice id="actionChoice" minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="clearDirectory" type="ClearDirectoryActionDefinition" />
+					<xs:element name="extractZipFile" type="ExtractZipFileActionDefinition" />
+					<xs:element name="copyDirectory" type="CopyDirectoryActionDefinition" />
+					<xs:element name="copyFile" type="CopyFileActionDefinition" />
+					<xs:element name="deleteFile" type="DeleteFileActionDefinition" />
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- Base Type for Actions -->
+	<xs:complexType name="ActionBaseDefinition" abstract="true">
+		<!-- Currently empty, because no elements or attributes needed -->
+	</xs:complexType>
+	
+	<!-- Clear Directory -->
+	<xs:complexType name="ClearDirectoryActionDefinition">
+		<xs:complexContent>
+			<xs:extension base="ActionBaseDefinition">
+				<!-- Required Directory Path -->
+				<xs:attribute name="directory" type="xs:string" use="required" />
+				<!-- Required Recursive Flag -->
+				<xs:attribute name="recursive" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<!-- Extract Zip File -->
+	<xs:complexType name="ExtractZipFileActionDefinition">
+		<xs:complexContent>
+			<xs:extension base="ActionBaseDefinition">
+				<!-- Required Zip File Path -->
+				<xs:attribute name="file" type="xs:string" use="required" />
+				<!-- Required Target Directory Path -->
+				<xs:attribute name="targetDirectory" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<!-- Copy File -->
+	<xs:complexType name="CopyFileActionDefinition">
+		<xs:complexContent>
+			<xs:extension base="ActionBaseDefinition">
+				<!-- Required Source File Path -->
+				<xs:attribute name="sourceFile" type="xs:string" use="required" />
+				<!-- Required Target Directory Path -->
+				<xs:attribute name="targetDirectory" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<!-- Copy Directory -->
+	<xs:complexType name="CopyDirectoryActionDefinition">
+		<xs:complexContent>
+			<xs:extension base="ActionBaseDefinition">
+				<!-- Required Source File Path -->
+				<xs:attribute name="sourceDirectory" type="xs:string" use="required" />
+				<!-- Required Target Directory Path -->
+				<xs:attribute name="targetDirectory" type="xs:string" use="required" />
+				<!-- Required Recursive Flag -->
+				<xs:attribute name="recursive" type="xs:boolean" use="optional" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<!-- Delete File -->
+	<xs:complexType name="DeleteFileActionDefinition">
+		<xs:complexContent>
+			<xs:extension base="ActionBaseDefinition">
+				<!-- Required Source File Path -->
+				<xs:attribute name="file" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
