@@ -37,7 +37,8 @@ import jakarta.xml.bind.annotation.XmlType;
     CopyDirectoryActionDefinition.class,
     CopyFileActionDefinition.class,
     DeleteFileActionDefinition.class,
-    SelfUpdateActionDefinition.class
+    SelfUpdateActionDefinition.class,
+    StartProcessActionDefinition.class
 })
 public abstract class ActionBaseDefinition {
 

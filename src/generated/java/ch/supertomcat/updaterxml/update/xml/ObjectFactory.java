@@ -105,4 +105,14 @@ public class ObjectFactory {
         return new SelfUpdateActionDefinition();
     }
 
+    /**
+     * Create an instance of {@link StartProcessActionDefinition }
+     * 
+     * @return
+     *     the new instance of {@link StartProcessActionDefinition }
+     */
+    public StartProcessActionDefinition createStartProcessActionDefinition() {
+        return new StartProcessActionDefinition();
+    }
+
 }

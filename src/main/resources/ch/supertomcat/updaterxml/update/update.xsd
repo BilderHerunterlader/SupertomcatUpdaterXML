@@ -11,6 +11,7 @@
 					<xs:element name="copyFile" type="CopyFileActionDefinition" />
 					<xs:element name="deleteFile" type="DeleteFileActionDefinition" />
 					<xs:element name="selfUpdate" type="SelfUpdateActionDefinition" />
+					<xs:element name="startProcess" type="StartProcessActionDefinition" />
 				</xs:choice>
 			</xs:sequence>
 		</xs:complexType>
@@ -27,7 +28,7 @@
 			<xs:extension base="ActionBaseDefinition">
 				<!-- Required Directory Path -->
 				<xs:attribute name="directory" type="xs:string" use="required" />
-				<!-- Required Recursive Flag -->
+				<!-- Optional Recursive Flag -->
 				<xs:attribute name="recursive" type="xs:boolean" use="optional" />
 			</xs:extension>
 		</xs:complexContent>
@@ -61,11 +62,11 @@
 	<xs:complexType name="CopyDirectoryActionDefinition">
 		<xs:complexContent>
 			<xs:extension base="ActionBaseDefinition">
-				<!-- Required Source File Path -->
+				<!-- Required Source Directory Path -->
 				<xs:attribute name="sourceDirectory" type="xs:string" use="required" />
 				<!-- Required Target Directory Path -->
 				<xs:attribute name="targetDirectory" type="xs:string" use="required" />
-				<!-- Required Recursive Flag -->
+				<!-- Optional Recursive Flag -->
 				<xs:attribute name="recursive" type="xs:boolean" use="optional" />
 			</xs:extension>
 		</xs:complexContent>
@@ -87,6 +88,20 @@
 			<xs:extension base="ActionBaseDefinition">
 				<!-- Required Target Directory Path -->
 				<xs:attribute name="targetDirectory" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<!-- Start Process -->
+	<xs:complexType name="StartProcessActionDefinition">
+		<xs:complexContent>
+			<xs:extension base="ActionBaseDefinition">
+				<xs:sequence>
+					<!-- Command and parameters -->
+					<xs:element name="command" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+				</xs:sequence>
+				<!-- Optional Working Directory Path -->
+				<xs:attribute name="workingDirectory" type="xs:string" use="optional" />
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
