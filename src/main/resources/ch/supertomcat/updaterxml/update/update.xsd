@@ -10,6 +10,7 @@
 					<xs:element name="copyDirectory" type="CopyDirectoryActionDefinition" />
 					<xs:element name="copyFile" type="CopyFileActionDefinition" />
 					<xs:element name="deleteFile" type="DeleteFileActionDefinition" />
+					<xs:element name="selfUpdate" type="SelfUpdateActionDefinition" />
 				</xs:choice>
 			</xs:sequence>
 		</xs:complexType>
@@ -76,6 +77,16 @@
 			<xs:extension base="ActionBaseDefinition">
 				<!-- Required Source File Path -->
 				<xs:attribute name="file" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<!-- Self Update -->
+	<xs:complexType name="SelfUpdateActionDefinition">
+		<xs:complexContent>
+			<xs:extension base="ActionBaseDefinition">
+				<!-- Required Target Directory Path -->
+				<xs:attribute name="targetDirectory" type="xs:string" use="required" />
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>

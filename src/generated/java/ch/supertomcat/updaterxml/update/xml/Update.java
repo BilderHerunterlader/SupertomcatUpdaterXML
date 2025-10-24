@@ -33,6 +33,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *           <element name="copyDirectory" type="{}CopyDirectoryActionDefinition"/>
  *           <element name="copyFile" type="{}CopyFileActionDefinition"/>
  *           <element name="deleteFile" type="{}DeleteFileActionDefinition"/>
+ *           <element name="selfUpdate" type="{}SelfUpdateActionDefinition"/>
  *         </choice>
  *       </sequence>
  *     </restriction>
@@ -54,7 +55,8 @@ public class Update {
         @XmlElement(name = "extractZipFile", type = ExtractZipFileActionDefinition.class),
         @XmlElement(name = "copyDirectory", type = CopyDirectoryActionDefinition.class),
         @XmlElement(name = "copyFile", type = CopyFileActionDefinition.class),
-        @XmlElement(name = "deleteFile", type = DeleteFileActionDefinition.class)
+        @XmlElement(name = "deleteFile", type = DeleteFileActionDefinition.class),
+        @XmlElement(name = "selfUpdate", type = SelfUpdateActionDefinition.class)
     })
     protected List<ActionBaseDefinition> actions;
 
@@ -81,6 +83,7 @@ public class Update {
      * {@link CopyFileActionDefinition }
      * {@link DeleteFileActionDefinition }
      * {@link ExtractZipFileActionDefinition }
+     * {@link SelfUpdateActionDefinition }
      * </p>
      * 
      * 

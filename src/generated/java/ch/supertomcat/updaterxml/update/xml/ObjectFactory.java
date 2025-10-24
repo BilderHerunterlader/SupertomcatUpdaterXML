@@ -95,4 +95,14 @@ public class ObjectFactory {
         return new DeleteFileActionDefinition();
     }
 
+    /**
+     * Create an instance of {@link SelfUpdateActionDefinition }
+     * 
+     * @return
+     *     the new instance of {@link SelfUpdateActionDefinition }
+     */
+    public SelfUpdateActionDefinition createSelfUpdateActionDefinition() {
+        return new SelfUpdateActionDefinition();
+    }
+
 }

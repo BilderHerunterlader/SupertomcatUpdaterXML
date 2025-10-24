@@ -36,7 +36,8 @@ import jakarta.xml.bind.annotation.XmlType;
     ExtractZipFileActionDefinition.class,
     CopyDirectoryActionDefinition.class,
     CopyFileActionDefinition.class,
-    DeleteFileActionDefinition.class
+    DeleteFileActionDefinition.class,
+    SelfUpdateActionDefinition.class
 })
 public abstract class ActionBaseDefinition {
 
